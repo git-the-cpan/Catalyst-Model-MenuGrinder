@@ -1,6 +1,6 @@
 package Catalyst::Model::MenuGrinder;
 BEGIN {
-  $Catalyst::Model::MenuGrinder::VERSION = '0.06';
+  $Catalyst::Model::MenuGrinder::VERSION = '0.07';
 }
 
 # ABSTRACT: Catalyst Model base class for WWW::MenuGrinder
@@ -14,10 +14,12 @@ use Moose;
 extends 'Catalyst::Model';
 
 use Scope::Guard;
+use Module::Runtime;
 
 has '_menu' => (
   is => 'rw',
   builder => '_build__menu',
+  lazy => 1,
 );
 
 has 'menu_class' => (
@@ -35,9 +37,7 @@ has 'menu_config' => (
 sub _build__menu {
   my ($self) = @_;
 
-  Class::MOP::load_class( $self->menu_class );
-
-  return $self->menu_class->new(
+  return Module::Runtime::use_module($self->menu_class)->new(
     config => $self->menu_config,
   );
 }
@@ -56,6 +56,13 @@ sub ACCEPT_CONTEXT {
   return $self->_menu;
 }
 
+sub BUILD {
+  my ($self) = @_;
+
+  # Force loading at startup
+  $self->_menu;
+}
+
 1;
 
 
@@ -68,7 +75,7 @@ Catalyst::Model::MenuGrinder - Catalyst Model base class for WWW::MenuGrinder
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -89,7 +96,7 @@ version 0.06
 
 =head1 AUTHOR
 
-Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@cleverdomain.org>
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -34,3 +34,4 @@ t/MyApp/script/myapp_server.pl
 t/MyApp/script/myapp_test.pl
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+META.json                                Module JSON meta-data (added by MakeMaker)

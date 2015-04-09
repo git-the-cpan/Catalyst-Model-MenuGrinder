@@ -1,6 +1,6 @@
 package Catalyst::Model::MenuGrinder::Menu;
 BEGIN {
-  $Catalyst::Model::MenuGrinder::Menu::VERSION = '0.06';
+  $Catalyst::Model::MenuGrinder::Menu::VERSION = '0.07';
 }
 
 # ABSTRACT : WWW::MenuGrinder base class for Catalyst
@@ -97,11 +97,11 @@ Catalyst::Model::MenuGrinder::Menu
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 AUTHOR
 
-Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@cleverdomain.org>
 
 =head1 COPYRIGHT AND LICENSE
 

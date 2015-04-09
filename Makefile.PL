@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.31;
 
 my %WriteMakefileArgs = (
   'ABSTRACT' => 'A Catalyst model base-class for using WWW::MenuGrinder',
-  'AUTHOR' => 'Andrew Rodland <andrew@hbslabs.com>',
+  'AUTHOR' => 'Andrew Rodland <andrew@cleverdomain.org.com>',
   'BUILD_REQUIRES' => {},
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
@@ -23,9 +23,10 @@ my %WriteMakefileArgs = (
     'Catalyst' => '5.8',
     'Moose' => '0',
     'Scope::Guard' => '0',
-    'WWW::MenuGrinder' => '0.04'
+    'WWW::MenuGrinder' => '0.04',
+    'Module::Runtime' => '0.014'
   },
-  'VERSION' => '0.06',
+  'VERSION' => '0.07',
   'test' => {
     'TESTS' => 't/*.t'
   }
